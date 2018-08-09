@@ -6,13 +6,17 @@ Fabricio C. Zuardi
 
 CraveFood Systems - August 2018
 
++++
+
+Bom dia!
+
 ---
 
 # React
 
 +++
 
-## React introduction 2013
+## What & Why
 
 ![Video](https://www.youtube.com/embed/XxVg_s8xAms)
 
@@ -20,12 +24,12 @@ Tom Occhino and Jordan Walke spoke about React.js at Facebook Seattle.
 
 Note:
 
-- 2:42 Mutation is complex
-- 3:14 One directional data binding
 - 5:30 a Javascript Library for building user interfaces 
 - 6:00 Declarative components, more than a template…
-- 7:31 No explicit data binding
 - 8:44 render functions
+- 3:14 One directional data binding
+- 2:42 Mutation is complex
+- 7:31 No explicit data binding
 - 12:18 Jordan Walke
 - 14:30 JSX
 - 24:14 Instagram.com
@@ -57,15 +61,15 @@ Note:
 - 23 sept 2017 - relicensing
 - Introduction to React https://www.youtube.com/watch?v=XxVg_s8xAms
 
-+++
-
-![cheng-lou](https://user-images.githubusercontent.com/7760/43876446-782e8894-9b6b-11e8-81bb-cc5366c16b40.jpg)
-
-+++
-
 ---
 
 # Reason
+
++++
+
+## What & Why
+
+> Reason is not a new language; it's a new syntax and toolchain powered by the battle-tested language, OCaml. Reason gives OCaml a familiar syntax geared toward JavaScript programmers, and caters to the existing NPM/Yarn workflow folks already know.
 
 +++
 
@@ -118,6 +122,18 @@ Hack, Flow, Infer
 Objective C -> Swift
 Java -> Kotlin
 ES5 -> Jquery / Cofeescript -> Babel / ES6 -> Flow / Typescript -> Elm / Closurescript / Reason 
+
++++
+
+## Taming the meta language
+
+![video](https://www.youtube.com/embed/_0T5OSSzxms)
+
++++
+
+## Taming the meta language
+
+![cheng-lou](https://user-images.githubusercontent.com/7760/43876446-782e8894-9b6b-11e8-81bb-cc5366c16b40.jpg)
 
 ---
 
@@ -344,10 +360,10 @@ ReactDOMRe.renderToElementWithId(<Counter />, "redemo");
 
 @[5](ReasonReact stateful components are like ReactJS stateful components, except with the concept of "reducer" (like Redux) built in)
 @[2](state can be of any type)
-@[3](a variant of all the possible state transitions in your component. In state machine terminology, this'd be a "token")
-@[8](initial state)
-@[13-16](state transitions)
-@[17,21](lifecycle events)
-@[20]( ReasonReact provides a helper field in self, called onUnmount (see [Subscription helpers](https://reasonml.github.io/reason-react/docs/en/subscriptions-helper)))
+@[3-4](a variant of all the possible state transitions in your component. In state machine terminology, this'd be a "token")
+@[9](initial state)
+@[14-16](state transitions)
+@[18,22](lifecycle events)
+@[21]( ReasonReact provides a helper field in self, called onUnmount (see [Subscription helpers](https://reasonml.github.io/reason-react/docs/en/subscriptions-helper)))
 @[21](BuckleScript is mostly a compiler, but it does ship some libraries for users' convenience )
 
