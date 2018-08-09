@@ -198,6 +198,29 @@ class Counter extends React.Component {
 ReactDOM.render(<Counter />, targetElement);
 ```
 
++++
+
+## Stateful Component
+
+```jsx
+class Counter extends React.Component {
+  state = { count: 0 };
+
+  render = () => <div>{this.state.count}</div>;
+
+  componentDidMount = () => {
+    this.intervalId = window.setInterval(
+      () => this.setState({ count: this.state.count + 1 }),
+      1000
+    );
+  };
+
+  componentWillUnmount = () => window.clearInterval(this.intervalId);
+}
+
+ReactDOM.render(<Counter />, targetElement);
+```
+
 @[2](initial state)
 @[4](render function)
 @[6,11,13](lifecycle methods)
@@ -205,4 +228,126 @@ ReactDOM.render(<Counter />, targetElement);
 ---
 
 # Reason code
+
++++
+
+## Setup
+
+```bash
+yarn global add bs-platform
+bsb -init my-react-app -theme react
+```
+
++++
+
+## JSX
+
+```ocaml
+let msgElement = "Hello Reason" |> ReasonReact.string;
+
+let hello = <h1> msgElement </h1>;
+
+ReactDOMRe.renderToElementWithId(hello, "redemo");
+```
+@[1](reason JSX is more strict about text nodes)
+@[1](reverse-application operator, aka pipe)
+
++++
+
+## Stateless Component
+
+```ocaml
+module ColorHello = {
+  let component = ReasonReact.statelessComponent("ColorHello");
+  let style = ReactDOMRe.Style.make;
+  let make = (~color, children) => {
+    ...component, 
+      render: _self => <h1 style={style(~color=color, ())}> ...children </h1>
+  };
+}
+
+ReactDOMRe.renderToElementWithId(<ColorHello color="blue"> msgElement </ColorHello>, "redemo");
+```
+
+@[1,8](files are modules, and modules are first class citizens)
+@[4,7](ReasonReact doesn't use/need classes. The component creation API gives you a plain record, whose fields (like render) you can override.)
+@[4](~color is a named argument)
+@[2,5](this method will create a record template for stateless component, the string is the displayName)
+@[6](use underscore on the start of a variable name to prevent unused var warnings)
+@[6](...children is used because children is always an array of elements)
+
++++
+
+## Reducer Component
+
+```
+module Counter = {
+  type state = {count: int};
+  type action =
+    | Increase;
+  let component = ReasonReact.reducerComponent("Counter");
+
+  let make = _children => {
+    ...component,
+    initialState: () => {count: 0},
+    render: self => {
+      let countNode = self.state.count |> string_of_int |> ReasonReact.string;
+      <div> countNode </div>;
+    },
+    reducer: (action, state) =>
+      switch (action) {
+      | Increase => ReasonReact.Update({count: state.count + 1})
+      },
+    didMount: self => {
+      let intervalId =
+        Js.Global.setInterval(() => self.send(Increase), 1000);
+      self.onUnmount(() => Js.Global.clearInterval(intervalId));
+    },
+  };
+};
+
+ReactDOMRe.renderToElementWithId(<Counter />, "redemo");
+```
+
++++
+
+## Reducer Component
+
+```
+module Counter = {
+  type state = {count: int};
+  type action =
+    | Increase;
+  let component = ReasonReact.reducerComponent("Counter");
+
+  let make = _children => {
+    ...component,
+    initialState: () => {count: 0},
+    render: self => {
+      let countNode = self.state.count |> string_of_int |> ReasonReact.string;
+      <div> countNode </div>;
+    },
+    reducer: (action, state) =>
+      switch (action) {
+      | Increase => ReasonReact.Update({count: state.count + 1})
+      },
+    didMount: self => {
+      let intervalId =
+        Js.Global.setInterval(() => self.send(Increase), 1000);
+      self.onUnmount(() => Js.Global.clearInterval(intervalId));
+    },
+  };
+};
+
+ReactDOMRe.renderToElementWithId(<Counter />, "redemo");
+```
+
+@[5](ReasonReact stateful components are like ReactJS stateful components, except with the concept of "reducer" (like Redux) built in)
+@[2](state can be of any type)
+@[3](a variant of all the possible state transitions in your component. In state machine terminology, this'd be a "token")
+@[8](initial state)
+@[13-16](state transitions)
+@[17,21](lifecycle events)
+@[20]( ReasonReact provides a helper field in self, called onUnmount (see [Subscription helpers](https://reasonml.github.io/reason-react/docs/en/subscriptions-helper)))
+@[21](BuckleScript is mostly a compiler, but it does ship some libraries for users' convenience )
 
