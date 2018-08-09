@@ -12,26 +12,6 @@ CraveFood Systems - August 2018
 
 +++
 
-## Timeline
-
-- created by Jordan Walke
-- avoid mutations on FB Chat rewrite
-- 2013: open sourced
-- 2015: redux
-- 2015: React Native
-- 2017: relicensing of React, Jest and Flow to MIT
-
-Note:
-
-- https://en.wikipedia.org/wiki/React_(JavaScript_library)
-- first deployed in 2011, Facebook newsfeed and later in Instagram 2012
-- influenced by XHP
-- react native February 2015 React conf, open sourced in March 2015
-- 23 sept 2017 - relicensing
-- Introduction to React https://www.youtube.com/watch?v=XxVg_s8xAms
-
-+++
-
 ## React introduction 2013
 
 ![Video](https://www.youtube.com/embed/XxVg_s8xAms)
@@ -50,6 +30,39 @@ Note:
 - 14:30 JSX
 - 24:14 Instagram.com
 - 25:30 Open Source
+
++++
+
+## Timeline
+
+@ul
+
+- created by Jordan Walke @ Facebook
+- motivation: FB Chat rewrite, avoid mutations on 
+- 2013: open sourced ([video](https://youtu.be/XxVg_s8xAms))
+- 2014: Flux better promoted ([video](https://youtu.be/nYkdrAPrdcw?t=10m22s))
+- 2015: Redux ([video](https://www.youtube.com/watch?v=xsSnOQynTHs))
+- 2015: React Native
+- 2017:
+  - Fiber, relicensing of React, Jest and Flow to MIT and…
+- 16 Março 2017: [Taming the metalanguage](https://youtu.be/_0T5OSSzxms) - Cheng Lou
+
+@ulend
+
+Note:
+
+- https://en.wikipedia.org/wiki/React_(JavaScript_library)
+- first deployed in 2011, Facebook newsfeed and later in Instagram 2012
+- influenced by XHP
+- react native February 2015 React conf, open sourced in March 2015
+- 23 sept 2017 - relicensing
+- Introduction to React https://www.youtube.com/watch?v=XxVg_s8xAms
+
++++
+
+![cheng-lou](https://user-images.githubusercontent.com/7760/43876446-782e8894-9b6b-11e8-81bb-cc5366c16b40.jpg)
+
++++
 
 ---
 
@@ -107,10 +120,3 @@ Objective C -> Swift
 Java -> Kotlin
 ES5 -> Jquery / Cofeescript -> Babel / ES6 -> Flow / Typescript -> Elm / Closurescript / Reason 
 
----
-
-# JS
-
----
-
-# Reason
