@@ -43,8 +43,7 @@ Note:
 - 2014: Flux better promoted ([video](https://youtu.be/nYkdrAPrdcw?t=10m22s))
 - 2015: Redux ([video](https://www.youtube.com/watch?v=xsSnOQynTHs))
 - 2015: React Native
-- 2017:
-  - Fiber, relicensing of React, Jest and Flow to MIT and…
+- 2017: Fiber, relicensing of React, Jest and Flow to MIT and…
 - 16 Março 2017: [Taming the metalanguage](https://youtu.be/_0T5OSSzxms) - Cheng Lou
 
 @ulend
@@ -124,7 +123,86 @@ ES5 -> Jquery / Cofeescript -> Babel / ES6 -> Flow / Typescript -> Elm / Closure
 
 # Javascript code
 
-___
++++
+
+## Setup
+
+```shell
+yarn add react react-dom
+yarn add --dev babel-preset-env\
+               babel-preset-react\
+               babel-preset-stage-2
+```
+
++++
+
+## JSX
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+
+const msg = "Hello React";
+const targetElement = document.getElementById("demo");
+
+const hello = <h1>{msg}</h1>;
+
+ReactDOM.render(hello, targetElement);
+```
+@[7](tags inside javascript)
+
++++
+
+### Stateless component
+
+```jsx
+import React from "react";
+import PropTypes from "prop-types";
+import ReactDOM from "react-dom";
+
+const msg = "Hello React";
+const targetElement = document.getElementById("demo");
+
+const ColorHello = ({ color, children }) => (
+  <h1 style={{ color }}>{children}</h1>
+);
+ColorHello.propTypes = {
+  color: PropTypes.string,
+  children: PropTypes.node
+};
+
+ReactDOM.render(<ColorHello color="blue">{msg}</ColorHello>, targetElement);
+```
+@[8-10](component is a function)
+
++++
+
+## Stateful Component
+
+```jsx
+class Counter extends React.Component {
+  state = { count: 0 };
+
+  render = () => <div>{this.state.count}</div>;
+
+  componentDidMount = () => {
+    this.intervalId = window.setInterval(
+      () => this.setState({ count: this.state.count + 1 }),
+      1000
+    );
+  };
+
+  componentWillUnmount = () => window.clearInterval(this.intervalId);
+}
+
+ReactDOM.render(<Counter />, targetElement);
+```
+
+@[2](initial state)
+@[4](render function)
+@[6,11,13](lifecycle methods)
+@[8](setstate)
+---
 
 # Reason code
 
