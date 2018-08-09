@@ -120,3 +120,11 @@ Objective C -> Swift
 Java -> Kotlin
 ES5 -> Jquery / Cofeescript -> Babel / ES6 -> Flow / Typescript -> Elm / Closurescript / Reason 
 
+---
+
+# Javascript code
+
+___
+
+# Reason code
+
